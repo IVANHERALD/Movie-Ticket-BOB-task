@@ -1,23 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
+import Login from './component/Login';
+import Register from './component/Register';
+import VerifyEmail from './component/VerifyEmail';
+import {  Route, Routes } from 'react-router-dom';
+import { AuthProvider } from './AuthContext';
+import {useState,useEffect} from 'react'
+import {auth} from './component/Firebase'
+
+import {onAuthStateChanged} from 'firebase/auth'
+import Home from './component/Home';
+
+
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(null)
+  const [timeActive, setTimeActive] = useState(false)
+  const [category, setSelectedCategory] = useState(null);
+  const [photos, setPhotos] = useState([]);
+  const newPhotos = [...photos];
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AuthProvider value={{photos,setPhotos,newPhotos,currentUser,timeActive, setTimeActive,category,setSelectedCategory}}>
+         <Routes>
+         
+          <Route path="/" element={<Login/>}/>
+          <Route path="/Register" element={<Register/>}/>
+          <Route path="/VerifyEmail" element={<VerifyEmail/>}/>
+          <Route path="/Home" element={<Home/>}/>
+         
+         </Routes>
+         </AuthProvider>
     </div>
   );
 }
