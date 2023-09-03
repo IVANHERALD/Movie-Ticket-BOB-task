@@ -1,7 +1,7 @@
 
 import React from 'react'
 import {TextField,Button} from '@mui/material';
-import login_image from '../Images/movieImage.jpg';
+import login_image from '../Images/popcorn.webp';
 import { useNavigate,Link } from 'react-router-dom';
 import {useState} from 'react'
 import {auth} from './Firebase'

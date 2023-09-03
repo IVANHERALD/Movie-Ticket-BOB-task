@@ -1,104 +1,67 @@
-import React,{useState,useEffect} from 'react'
-import { Search } from 'semantic-ui-react'
-import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ChairIcon from '@mui/icons-material/Chair';
-
-
-import AddIcon from '@mui/icons-material/Add';
-import { Grid, Button,Typography } from '@mui/material';
-
-import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
-import AutoStoriesIcon from '@mui/icons-material/AutoStories';
-import SportsCricketIcon from '@mui/icons-material/SportsCricket';
-import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
-import TvIcon from '@mui/icons-material/Tv';
-
-
-function Profile() {
-  const history = useNavigate();
+import './Styles/Home.css';
+import avenger from '../Images/avengers.jpeg';
+function Home() {
  
+  const [movieData, setMovieData] = useState([]);
 
- //const prodRef=rootRef.child('product');
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/movies'); // Fetch data from your server's /movies endpoint
+        if (response.ok) {
+          const data = await response.json();
+          // Assuming the response contains a "movies" property
+          setMovieData(data.movies);
+        } else {
+          console.error('Error fetching movie data:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error fetching movie data:', error);
+      }
+    };
 
- const handleClick = (passCategory) => {
-  history('/BuyCategory/' + passCategory);
+    // Fetch data when the component mounts
+    fetchData();
+  }, []); // The empty array [] ensures that this effect runs once when the component mounts
+  const history=useNavigate();
+  const sortedMovieData = movieData.sort((a, b) => {
+ 
+  const yearA = parseInt(a.release_date.split('-')[0]);
+  const yearB = parseInt(b.release_date.split('-')[0]);
+  return yearB - yearA;
+});
+
+const handleClick=(movieName)=>
+{
+  history('/Showtime/'+movieName)
+  console.log(movieName)
 }
-  const AddIconfunction = () => {
-    history('/RentCatergory');
-  }
-
 
   return (
     <div className="profile">
-      <div className='header'>
-        <h2 className='heading_text'> Find Your Essentials</h2>Cart
-        <span className='Rental'><Button variant="outlined" sx={{ color: '#030202', borderColor: '#030202' }} startIcon={<AddIcon />} onClick={AddIconfunction}>ADD</Button></span>
-        <br /><br></br><Search />
-        <h2>Categories</h2></div><br /><br /><br />
+      <h1>Movie List</h1>
+      <div className='Container'>
 
-      <div className='Categories'>
-        <Grid container spacing={1} direction="row"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Grid item md={1}>
-
-            <div className='Category'>
-              <CameraAltIcon sx={{ fontSize: 80 }} onClick={() => { handleClick('Camera') }} />
-            </div>
-
-          </Grid>
-
-          <Grid item md={1}>
-
-            <div className='Category'>
-              <ChairIcon sx={{ fontSize: 80 }} onClick={() => { handleClick('Furniture') }}/>
-            </div>
-
-          </Grid>
-          <Grid item md={1}>
-            <div className='Category'>
-              
-            </div>
-          </Grid>
-          <Grid item md={1}>
-            <div className='Category'>
-              <PhoneIphoneIcon style={{ fontSize: '65px' }} onClick={() => { handleClick('Mobiles') }}/>
-              </div>
-        </Grid>
-              <Grid item md={1}>
-            <div className='Category'>
-              <Typography style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-              onClick={() => { handleClick('BSH') }}>
-              <SportsCricketIcon style={{ fontSize: '40px' }} />
-              <AutoStoriesIcon style={{fontSize:'40px'}}/>
-
-              </Typography>
-              </div>
-              </Grid>
-              <Grid item md={1}>
-            <div className='Category'>
-              <SportsEsportsIcon style={{ fontSize: '65px' }}  onClick={() => { handleClick('Gaming')}}/>
-            </div>
-          </Grid>
-          <Grid item md={1}>
-            <div className='Category'>
-              <TvIcon style={{ fontSize: '65px' }}  onClick={() => { handleClick('Tv') }}/>
-            </div>
-          </Grid>
-        </Grid>
-      </div>
-      <div className='recently-added'>
-      <h3> Recently Added</h3>
-     
-
+        {sortedMovieData.map((movie) => (
       
+         
+        
+          <p className='movie_card' key={movie.id}>
+            <img src={avenger} onClick={()=>handleClick(movie.movie_name)}/>
+            <p>Movie Name: {movie.movie_name}</p>
+            <p>Theatre Name: {movie.theatre_name}</p>
+            <p>Theatre Location: {movie.theatre_location}</p>
+            <p>Release Date: {movie.release_date}</p>
+          
+          </p>
+        ))}
+    
       </div>
-
       
     </div>
-  )
+  );
 }
 
-export default Profile
+export default Home;

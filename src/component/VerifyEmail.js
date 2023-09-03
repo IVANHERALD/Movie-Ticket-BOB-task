@@ -12,7 +12,9 @@ function VerifyEmail() {
     const [time, setTime] = useState(60)
     const {timeActive, setTimeActive} = useAuthValue()
     const history = useNavigate()
-
+    const backtoLogin=()=>{
+      history('/');
+    }
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -59,9 +61,10 @@ function VerifyEmail() {
   return (
     <div>
         <h1> Verify your Email Address</h1>
-        <h3><b>A Verification emial has been sent to <span>{currentUser?.email}</span></b></h3>
+        <h3><b>A Verification email has been sent to <span>{currentUser?.email}</span></b></h3>
         <p>Follow the instruction in the email to verify your account</p>
-        <Button variant="contained" onClick={resendEmailVerification} disabled={timeActive}>Resend Email{timeActive && time}</Button>
+        <Button variant="contained" onClick={resendEmailVerification} disabled={timeActive}>Resend Email{timeActive && time}</Button><br></br><br/><br/><br></br>
+        <Button variant='contained' onClick={backtoLogin}>Back to Login</Button>
     </div>
   )
 }

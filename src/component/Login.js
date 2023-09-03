@@ -3,7 +3,7 @@ import "./Styles/style.css"
 import { useNavigate,Link } from "react-router-dom";
 import Home from './Home'
 import {TextField,Button} from '@mui/material';
-import login_image from '../Images/movieImage.jpg';
+import login_image from '../Images/popcorn.webp';
 
 import { signInWithEmailAndPassword, sendEmailVerification, signInWithPopup } from 'firebase/auth';
 

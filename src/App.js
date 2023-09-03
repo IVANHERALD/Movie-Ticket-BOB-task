@@ -10,6 +10,8 @@ import {auth} from './component/Firebase'
 
 import {onAuthStateChanged} from 'firebase/auth'
 import Home from './component/Home';
+import Showtime from './component/Showtime';
+import Seat from './component/Seat';
 
 
 
@@ -30,7 +32,8 @@ function App() {
           <Route path="/Register" element={<Register/>}/>
           <Route path="/VerifyEmail" element={<VerifyEmail/>}/>
           <Route path="/Home" element={<Home/>}/>
-         
+          <Route path="/Showtime/:movieName" element={<Showtime/>}/>
+          <Route path="/Seat" element={<Seat/>}/>
          </Routes>
          </AuthProvider>
     </div>
