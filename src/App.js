@@ -12,6 +12,7 @@ import {onAuthStateChanged} from 'firebase/auth'
 import Home from './component/Home';
 import Showtime from './component/Showtime';
 import Seat from './component/Seat';
+import MaxSeat from './component/MaxSeat';
 
 
 
@@ -31,9 +32,10 @@ function App() {
           <Route path="/" element={<Login/>}/>
           <Route path="/Register" element={<Register/>}/>
           <Route path="/VerifyEmail" element={<VerifyEmail/>}/>
-          <Route path="/Home" element={<Home/>}/>
-          <Route path="/Showtime/:movieName" element={<Showtime/>}/>
-          <Route path="/Seat" element={<Seat/>}/>
+          <Route path="/movie" element={<Home/>}/>
+          <Route path="/movie/:movieName" element={<Showtime/>}/>
+          <Route path="/Seat/:selectedNumber" element={<Seat/>}/>
+          <Route path="/SeatSelection" element={<MaxSeat/>}/>
          </Routes>
          </AuthProvider>
     </div>

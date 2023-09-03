@@ -8,6 +8,7 @@ import Seat from './component/Seat';
 import Try from './component/try';
 import Home from './component/Home';
 import Showtime from './component/Showtime';
+import MaxSeat from './component/MaxSeat';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

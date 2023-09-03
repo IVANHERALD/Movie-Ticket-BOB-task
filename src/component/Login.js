@@ -37,7 +37,7 @@ const login = e => {
       })
     .catch(err => alert(err.message))
   }else{
-    history('/Home')
+    history('/movie')
   }
   })
   .catch(err => setError(err.message))

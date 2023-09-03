@@ -32,5 +32,27 @@ app.get("/movies", async (req, res) => {
     console.error("Error fetching movies:", error);
     res.status(500).json({ error: "Failed to fetch movies" });
   }
-});  
+}); 
+app.get("/movies/:movieName", async (req, res) => {
+  try {
+    const movieName = req.params.movieName;
+
+    
+    const theatersSnapshot = await movieTicketCollection.where("movie_name", "==", movieName).get();
+
+    const theatersData = [];
+    theatersSnapshot.forEach((doc) => {
+      const data = doc.data();
+      theatersData.push({
+        theatre_name: data.theatre_name,
+        theatre_location: data.theatre_location
+      });
+    });
+
+    res.json({ theaters: theatersData });
+  } catch (error) {
+    console.error("Error fetching theaters:", error);
+    res.status(500).json({ error: "Failed to fetch theaters" });
+  }
+}); 
 app.listen(5000, ()=>{console.log(`Server started on port 5000`)});

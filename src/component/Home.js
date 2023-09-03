@@ -35,7 +35,7 @@ function Home() {
 
 const handleClick=(movieName)=>
 {
-  history('/Showtime/'+movieName)
+  history('/movie/'+movieName)
   console.log(movieName)
 }
 

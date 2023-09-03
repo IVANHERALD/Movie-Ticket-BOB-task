@@ -1,13 +1,8 @@
-/**
- * inspiration repo: https://github.com/bradtraversy/vanillawebprojects
- * movie seat booking: https://github.com/bradtraversy/vanillawebprojects/tree/master/movie-seat-booking
- * but in react 🤓
- */
 
 import './Styles/Seat.css';
 import React, { useState } from 'react'
 import clsx from 'clsx'
-
+import { useParams } from 'react-router-dom';
 const movies = [
   {
     name: 'Avenger',
@@ -31,7 +26,7 @@ const movies = [
   },
 ]
 
-const seats = Array.from({ length: 10 * 12 }, (_, i) => i)
+const seats = Array.from({ length: 14 * 15 }, (_, i) => i)
 
 export default function App() {
   const [selectedMovie, setSelectedMovie] = useState(movies[0])
@@ -39,32 +34,22 @@ export default function App() {
 
   return (
     <div className="App">
-      <Movies
-        movie={selectedMovie}
-        onChange={movie => {
-          setSelectedSeats([])
-          setSelectedMovie(movie)
-        }}
-      />
+      
       <ShowCase />
       <Cinema
         movie={selectedMovie}
         selectedSeats={selectedSeats}
         onSelectedSeatsChange={selectedSeats => setSelectedSeats(selectedSeats)}
       />
+       You have selected <span className="count">{selectedSeats.length}</span>{' '}
+     
 
      
     </div>
   )
 }
 
-function Movies({ movie, onChange }) {
-  return (
-    <div className="Movies">
-      
-    </div>
-  )
-}
+
 
 function ShowCase() {
   return (
