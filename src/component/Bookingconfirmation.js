@@ -1,19 +1,80 @@
 import { Button, InputAdornment, TextField } from '@mui/material'
 import React,{useState,useEffect} from 'react'
+import { useNavigate } from 'react-router-dom';
 
 import './Styles/Bookingconfirmation.css';
 import { useAuthValue } from '../AuthContext';
 function Bookingconfirmation() {
-  const {currentUser}=useAuthValue();
+  const history=useNavigate();
+  const {currentUser,ChosenMovie}=useAuthValue();
+  const {selectedSeats}=useAuthValue();
+  const {selectedTime, setSelectedTime} = useAuthValue();
+  const {theatreData, setTheatreData} = useAuthValue([]);
+ 
   const [email, setEmail] = useState(currentUser?.email || '');
-  const [phonenumber, setphonenumber] = useState(currentUser?.email || '');
+  const [phonenumber, setphonenumber] = useState(null);
   const [displayName, setDisplayName] = useState(currentUser?.displayName || '');
   useEffect(() => {
     setDisplayName(currentUser?.displayName || '');
     setEmail(currentUser?.email || '');
   }, [currentUser]);
-  const ConfirmBooking=()=>{
-    console.log(currentUser.displayName,currentUser.email,phonenumber);
+  const ConfirmBooking=async()=>{
+    const bookingData={
+      displayName,
+      email,
+    phonenumber,
+    ChosenMovie,
+     theatreLocation:theatreData[0].theatre_location,
+     theatreName:theatreData[0].theatre_name,
+     selectedTime,
+     selectedSeats,
+     numberOfSeats:selectedSeats.length,
+
+    }
+   // history('/confirmBooking')
+    console.log(currentUser.displayName,currentUser.email,phonenumber,ChosenMovie,theatreData[0].theatre_location,theatreData[0].theatre_name,selectedTime,selectedSeats,"number:",selectedSeats.length);
+   /* fetch('/postBookingData', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(bookingData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          // Handle success, e.g., redirect to a confirmation page
+          console.log('Data posted successfully:', data.message);
+          // You can navigate to a confirmation page or perform any other action here
+        } else {
+          // Handle failure
+          console.error('Failed to post data:', data.message);
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });*/
+      
+        try {
+          const response = await fetch('/store-data', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(bookingData),
+            
+          });
+    
+          if (response.status === 201) {
+            const data = await response.json();
+            console.log('Data stored successfully. Document ID:', data.docId);
+          } else {
+            console.error('Failed to store data.');
+          }
+        } catch (error) {
+          console.error('Error storing data:', error);
+        }
+      
   }
   return (
     <div className='Contact_details'>

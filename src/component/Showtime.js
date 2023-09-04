@@ -2,18 +2,32 @@ import React ,{useEffect,useState}from 'react'
 import { Button } from '@mui/material'
 import './Styles/Showtime.css'
 import { useNavigate,useParams } from 'react-router-dom'
+import { useAuthValue } from '../AuthContext';
 
 function Showtime() {
     const history=useNavigate();
-    const { movieName } = useParams(); // 
-  const [theatreData, setTheatreData] = useState([]);
+    const { movieName } = useParams();
+    const {ChosenMovie,setChosenMovie}=useAuthValue(); 
+    const {theatreData, setTheatreData} = useAuthValue([]);
+ // const [theatreData, setTheatreData] = useState([]);
   const [currentDate, setCurrentDate] = useState('');
+  const {selectedTime, setSelectedTime} = useAuthValue();
+  const handleTimeClick = (time) => {
+    setSelectedTime(time);
+    console.log(selectedTime);
+      history('/SeatSelection');
+    
+  };
     const TimeClick=()=>{
         history('/SeatSelection');
     }
+    useEffect(()=>{
+      setChosenMovie(movieName);
+    },[movieName])
     useEffect(() => {
+      console.log(ChosenMovie);
         const fetchData = async () => {
-          console.log("write");
+          
           try {
             const response = await fetch(`/movies/${movieName}`); // Use template literals
             if (response.ok) {
@@ -46,13 +60,20 @@ function Showtime() {
       </span>
     ))}
   </div>
-    <div className='Showtime-Buttons'>
-        <Button variant='outlined' sx={{color:'white',borderColor:'#FFFF'}} onClick={TimeClick}> 10:00 AM<br/>
-        EPIQ</Button>
-    <Button variant='outlined' sx={{color:'white',borderColor:'#FFFF'}}onClick={TimeClick}>02:00 PM</Button>
-    <Button variant='outlined' sx={{color:'white',borderColor:'#FFFF'}}onClick={TimeClick}>06:00 PM<br/>DOLBY</Button>
-    <Button variant='outlined' sx={{color:'white',borderColor:'#FFFF'}}onClick={TimeClick}>10:00 PM</Button>
-    </div></div>
+    
+    <div className='Showtime-Buttons'>{['10:00 AM DOLBY', '02:00 PM', '06:00 PM EPIQ', '10:00 PM'].map((time) => (
+          <Button
+            key={time}
+            variant="outlined"
+            sx={{
+              color: 'white',
+              borderColor: '#FFFF',
+            }}
+            onClick={() => handleTimeClick(time)}
+          >
+            {time}
+          </Button>
+        ))}</div></div>
   )
 }
 

@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
+import { useAuthValue } from '../AuthContext';
 const movies = [
   {
     name: 'Avenger',
@@ -33,7 +34,7 @@ const seats = Array.from({ length: 11 * 15 }, (_, i) => i)
 export default function App() {
   const history=useNavigate();
   const [selectedMovie, setSelectedMovie] = useState(movies[0])
-  const [selectedSeats, setSelectedSeats] = useState([])
+  const {selectedSeats, setSelectedSeats} = useAuthValue([])
   const [selectedSeatLabels, setSelectedSeatLabels] = useState({});
   function handleSelectedState(seat) {
     const isSelected = selectedSeats.includes(seat);
@@ -66,7 +67,7 @@ export default function App() {
     for (const seatIndex in selectedSeatLabels) {
       console.log(`Seat at index ${seatIndex} has label: ${selectedSeatLabels[seatIndex]}`);
     }
-    console.log(`Number of Seats Selected: ${selectedSeats.length}`);
+    console.log(`Number of Seats Selected: ${selectedSeats}`);
     history('/Bookingpage')
   };
   return (

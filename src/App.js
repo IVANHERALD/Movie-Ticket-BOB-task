@@ -14,14 +14,19 @@ import Showtime from './component/Showtime';
 import Seat from './component/Seat';
 import MaxSeat from './component/MaxSeat';
 import Bookingconfirmation from './component/Bookingconfirmation';
+import ConfirmedBooking from './component/ConfirmedBooking';
 
 
 
 function App() {
+  const [ChosenMovie,setChosenMovie]=useState(null)
   const [currentUser, setCurrentUser] = useState(null)
   const [timeActive, setTimeActive] = useState(false)
   const [category, setSelectedCategory] = useState(null);
   const [photos, setPhotos] = useState([]);
+  const [theatreData, setTheatreData] = useState([]);
+  const [selectedTime, setSelectedTime] = useState(null);
+  const [selectedSeats, setSelectedSeats] = useState([]);
   const newPhotos = [...photos];
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -29,9 +34,10 @@ function App() {
      })
   }, [])
   
+  
   return (
     <div className="App">
-      <AuthProvider value={{photos,setPhotos,newPhotos,currentUser,timeActive, setTimeActive,category,setSelectedCategory}}>
+      <AuthProvider value={{photos,setPhotos,newPhotos,currentUser,timeActive, ChosenMovie,setTimeActive,category,selectedTime,selectedSeats,setSelectedSeats,setSelectedTime,setSelectedCategory,setChosenMovie,theatreData,setTheatreData}}>
          <Routes>
          
           <Route path="/" element={<Login/>}/>
@@ -42,6 +48,7 @@ function App() {
           <Route path="/Seat/:selectedNumber" element={<Seat/>}/>
           <Route path="/SeatSelection" element={<MaxSeat/>}/>
           <Route path="/BookingPage" element={<Bookingconfirmation/>}/>
+          <Route path='/confirmBooking' element={<ConfirmedBooking/>}/>
          </Routes>
          </AuthProvider>
     </div>
