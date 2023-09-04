@@ -7,8 +7,9 @@ function Showtime() {
     const history=useNavigate();
     const { movieName } = useParams(); // 
   const [theatreData, setTheatreData] = useState([]);
+  const [currentDate, setCurrentDate] = useState('');
     const TimeClick=()=>{
-        history('/Seat');
+        history('/SeatSelection');
     }
     useEffect(() => {
         const fetchData = async () => {
@@ -27,16 +28,24 @@ function Showtime() {
         };
     
         fetchData();
+        const currentDate = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    setCurrentDate(currentDate.toLocaleDateString(undefined, options));
       }, [movieName]);
   return (
-    <div><ul>
+    <div>
+       <div className='current-date'>
+        <center>{currentDate}</center>
+      </div>
+      <div>
     {theatreData.map((theatre, index) => (
-      <li key={index}>
+      <span key={index}>
+        <p>Movie Name:{movieName}</p>
         <p>Theatre Name: {theatre.theatre_name}</p>
         <p>Theatre Location: {theatre.theatre_location}</p>
-      </li>
+      </span>
     ))}
-  </ul>
+  </div>
     <div className='Showtime-Buttons'>
         <Button variant='outlined' sx={{color:'white',borderColor:'#FFFF'}} onClick={TimeClick}> 10:00 AM<br/>
         EPIQ</Button>

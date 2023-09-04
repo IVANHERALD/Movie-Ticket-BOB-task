@@ -9,6 +9,7 @@ import Try from './component/try';
 import Home from './component/Home';
 import Showtime from './component/Showtime';
 import MaxSeat from './component/MaxSeat';
+import Bookingconfirmation from './component/Bookingconfirmation';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

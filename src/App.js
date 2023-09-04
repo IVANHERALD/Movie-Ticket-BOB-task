@@ -13,6 +13,7 @@ import Home from './component/Home';
 import Showtime from './component/Showtime';
 import Seat from './component/Seat';
 import MaxSeat from './component/MaxSeat';
+import Bookingconfirmation from './component/Bookingconfirmation';
 
 
 
@@ -22,7 +23,11 @@ function App() {
   const [category, setSelectedCategory] = useState(null);
   const [photos, setPhotos] = useState([]);
   const newPhotos = [...photos];
-
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user)
+     })
+  }, [])
   
   return (
     <div className="App">
@@ -36,6 +41,7 @@ function App() {
           <Route path="/movie/:movieName" element={<Showtime/>}/>
           <Route path="/Seat/:selectedNumber" element={<Seat/>}/>
           <Route path="/SeatSelection" element={<MaxSeat/>}/>
+          <Route path="/BookingPage" element={<Bookingconfirmation/>}/>
          </Routes>
          </AuthProvider>
     </div>

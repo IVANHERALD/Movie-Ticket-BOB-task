@@ -3,6 +3,8 @@ import './Styles/Seat.css';
 import React, { useState } from 'react'
 import clsx from 'clsx'
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 const movies = [
   {
     name: 'Avenger',
@@ -26,12 +28,47 @@ const movies = [
   },
 ]
 
-const seats = Array.from({ length: 14 * 15 }, (_, i) => i)
+const seats = Array.from({ length: 11 * 15 }, (_, i) => i)
 
 export default function App() {
+  const history=useNavigate();
   const [selectedMovie, setSelectedMovie] = useState(movies[0])
   const [selectedSeats, setSelectedSeats] = useState([])
+  const [selectedSeatLabels, setSelectedSeatLabels] = useState({});
+  function handleSelectedState(seat) {
+    const isSelected = selectedSeats.includes(seat);
+    const row = Math.floor(seat / 15) + 1;
+    const seatNumber = seat % 15 + 1;
+    const seatLabel = String.fromCharCode(64 + row) + seatNumber;
+    
 
+    if (isSelected) {
+      const updatedSelectedSeats = selectedSeats.filter(
+        selectedSeat => selectedSeat !== seat
+      );
+      const updatedSeatLabels = { ...selectedSeatLabels };
+      delete updatedSeatLabels[seat];
+
+      setSelectedSeats(updatedSelectedSeats);
+      setSelectedSeatLabels(updatedSeatLabels);
+    } else {
+      const updatedSelectedSeats = [...selectedSeats, seat];
+      const updatedSeatLabels = {
+        ...selectedSeatLabels,
+        [seat]: seatLabel,
+      };
+      setSelectedSeats(updatedSelectedSeats);
+      setSelectedSeatLabels(updatedSeatLabels);
+    }
+  }
+  const displaySelectedSeatLabels = () => {
+  console.log("Selected Seats:");
+    for (const seatIndex in selectedSeatLabels) {
+      console.log(`Seat at index ${seatIndex} has label: ${selectedSeatLabels[seatIndex]}`);
+    }
+    console.log(`Number of Seats Selected: ${selectedSeats.length}`);
+    history('/Bookingpage')
+  };
   return (
     <div className="App">
       
@@ -40,8 +77,10 @@ export default function App() {
         movie={selectedMovie}
         selectedSeats={selectedSeats}
         onSelectedSeatsChange={selectedSeats => setSelectedSeats(selectedSeats)}
+        handleSelectedState={handleSelectedState}
       />
        You have selected <span className="count">{selectedSeats.length}</span>{' '}
+       <span><Button variant='outlined' onClick={displaySelectedSeatLabels}>Pay</Button></span>
      
 
      
@@ -67,7 +106,7 @@ function ShowCase() {
   )
 }
 
-function Cinema({ movie, selectedSeats, onSelectedSeatsChange }) {
+function Cinema({ movie, selectedSeats, onSelectedSeatsChange,handleSelectedState }) {
   function handleSelectedState(seat) {
     const isSelected = selectedSeats.includes(seat)
     if (isSelected) {
@@ -87,10 +126,14 @@ function Cinema({ movie, selectedSeats, onSelectedSeatsChange }) {
         {seats.map(seat => {
           const isSelected = selectedSeats.includes(seat)
           const isOccupied = movie.occupied.includes(seat)
+          const row = Math.floor(seat / 15) + 1; // Calculate row number
+          const seatNumber = seat % 15 + 1; // Calculate seat number within the row
+          const seatLabel = String.fromCharCode(64 + row) + seatNumber; 
           return (
+            <span key={seat}>{seatLabel}
             <span
               tabIndex="0"
-              key={seat}
+              
               className={clsx(
                 'seat',
                 isSelected && 'selected',
@@ -102,12 +145,15 @@ function Cinema({ movie, selectedSeats, onSelectedSeatsChange }) {
                   ? null
                   : e => {
                       if (e.key === 'Enter') {
-                        handleSelectedState(seat)
+                        handleSelectedState(seat);
                       }
                     }
               }
             />
-          )
+            </span>
+              
+           
+          );
         })}
       </div>
     </div>
