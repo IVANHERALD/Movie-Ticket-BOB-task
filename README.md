@@ -5,21 +5,21 @@
 Securely authenticate users with email and password or their Google accounts using Firebase Authentication.
 ![Login](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/35e94af5-f25f-48fa-97eb-29015484992c)
 
-![Login](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/5bbe9d66-fdab-4c7b-accc-ff478e8e35d4)
-
 ## Google Authentication
+![SigninwithGoogle](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/fc23fc87-e276-4fa9-a231-e68784275682)
 
-![SigninwithGoogle](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/796380a1-a066-45f6-b62d-71a56fd735bf)
 
 ## Register page
 Register users with Firebase Authentication to store their basic details, ensuring a seamless and secure experience.
 
-![Register](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/73651b04-3546-4269-850b-92b680d4fa2a)
+![Register](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/93eac5db-c02e-4fec-895b-a99128978553)
 
 ## Verify email
 Users receive a verification email to confirm their identity, ensuring a secure experience.
-Upon successful verification, users can direct to login page.
-![VerifyEmail](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/aef20692-e668-4761-ae01-d510ff25e366)
+Upon successful verification, users can direct to the login page.
+![VerifyEmail](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/7c174630-a650-402e-b286-704895ed3286)
+
+
 
 ## Home page
 Home pages display the details like movie poster, movie name, theatre name, theatre location, and release year of all movies stored in a database. It is categorized by release year. The latest released movies are displayed first.
