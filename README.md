@@ -21,7 +21,8 @@ Upon successful verification, users can direct to login page.
 ![VerifyEmail](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/aef20692-e668-4761-ae01-d510ff25e366)
 
 ## Home page
-Home pages display the details of all movies stored in a database. It is categorized by release year. The latest released movies are displayed first.
+Home pages display the details like movie poster, movie name, theatre name, theatre location, and release year of all movies stored in a database. It is categorized by release year. The latest released movies are displayed first.
+
 
 ![Home](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/85fdd06b-2e7d-405b-87f9-e4a76013b1c7)
 
