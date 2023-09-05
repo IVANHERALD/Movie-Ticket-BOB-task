@@ -31,7 +31,7 @@ function Bookingconfirmation() {
      numberOfSeats:selectedSeats.length,
 
     }
-   // history('/confirmBooking')
+    history('/confirmBooking')
     console.log(currentUser.displayName,currentUser.email,phonenumber,ChosenMovie,theatreData[0].theatre_location,theatreData[0].theatre_name,selectedTime,selectedSeats,"number:",selectedSeats.length);
    /* fetch('/postBookingData', {
       method: 'POST',
