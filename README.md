@@ -3,6 +3,7 @@
 ## Authentication
 ## Login page
 Securely authenticate users with email and password or their Google accounts using Firebase Authentication.
+![Login](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/35e94af5-f25f-48fa-97eb-29015484992c)
 
 ![Login](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/5bbe9d66-fdab-4c7b-accc-ff478e8e35d4)
 
