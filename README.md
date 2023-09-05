@@ -45,25 +45,28 @@ The User can select the number of seats(limited to a max of 10 seats) . Without 
 ## Screen Preview
 The Users can select the seats according to the row numbers . It is provided in an interactive UI
 with the seats facing the screen.
+![SeatSelection](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/93a9adf4-5524-4025-8d09-0bd33f9cab93)
 
-![SeatSelection](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/efa4a820-e53a-431d-8975-e0cf439963f2)
 
 ## Share Contact
 After selecting the seats the user should share contact details where the booking confirmation details can be sent. The fields like email and name are auto-filled using the currentUser parameters.
-![ShareContact](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/2324c324-30d3-475a-9cd3-49fb32ff4b48)
+![ShareContact](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/51991224-21bd-4d41-ad88-7c22ca485255)
 
 ## QR Code for movie details
-The QRcode is generated for the booking details.
+The QR code is generated for the booking details.
 
-![QrGeneaartion](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/3c3470d6-67a8-4ff0-9014-43ecf28c47f5)
+![QrGeneaartion](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/8fcfca4f-78bf-4571-b114-258627901677)
 
 # FIREBASE CONSOLE SCREENSHOTS
-![reads](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/919b54dc-3737-4b68-a7b1-28769fd27da4)
-## The following image shows the collection where the booking details are stored in Firebase.
-![retrive_data](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/4f0fb34a-4d2a-4fff-9072-126ecb085740)
+![reads](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/fc956ad6-f4bd-47e1-8179-1b4a8a484a3d)
+### The following image shows the authenticated user dashboard.
+![Authenticatedusers](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/3beb99b5-e609-4c87-9119-1e65ed4bd481)
 
-## The following image depicts the collection where the given movie data is stored. 
-![storeData](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/67865387-49bf-4fa2-b08b-554461ab813c)
+### The following image shows the collection where the booking details are stored in Firebase.
+![retrive_data](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/40311d12-206b-4803-b38d-b9cfec6ef499)
+
+### The following image depicts the collection where the given movie data is stored. 
+![storeData](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/cfc05633-980f-45c7-8275-366f69f9ad5f)
 
 
 
