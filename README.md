@@ -23,23 +23,24 @@ Upon successful verification, users can direct to the login page.
 
 ## Home page
 Home pages display the details like movie poster, movie name, theatre name, theatre location, and release year of all movies stored in a database. It is categorized by release year. The latest released movies are displayed first.
+![Home](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/bd8874aa-bfbe-4aa4-8131-70449ceaca34)
 
-
-![Home](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/85fdd06b-2e7d-405b-87f9-e4a76013b1c7)
 
 
 ## Show Time details page
 The Showtime page displays the available time slots for the selected movies along with the theatre name and location.
-![ShowTime](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/ac488a62-d509-4125-81c7-c565013b29fb)
+![ShowTime](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/3d46b1e4-b764-4ad6-8b6b-5b884eff2b8d)
+
 
 
 ## Seat Selection page
 The User can select the number of seats(limited to a max of 10 seats) . Without selecting the number of seats the users can't navigate to the next page.
 ### Before Seat Selection 
-![BeforeSelectingSeats](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/e35201be-9fbf-42f3-98d0-73143353fea7)
+![BeforeSelectingSeats](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/6155310f-20ba-4d52-b74a-8de081fa4c14)
+
 
 ### After Seat Selection 
-![AfterSelectigSeats](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/35bbcb67-65e9-457a-912a-54beb870f8e9)
+![AfterSelectigSeats](https://github.com/IVANHERALD/Movie-Ticket-BOB-task/assets/72930008/c5cc7257-c9e4-4f35-bacb-693d33578851)
 
 ## Screen Preview
 The Users can select the seats according to the row numbers . It is provided in an interactive UI
