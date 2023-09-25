@@ -1,4 +1,4 @@
-# Movie Ticket Booking System (Business On Bot Task)
+# Movie Ticket Booking System
 
 ## Authentication
 ## Login page
